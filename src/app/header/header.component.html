@@ -1,0 +1,10 @@
+<header class="container">
+  <div class="login-container">
+    <button *ngIf="!(auth.isAuthenticated$ | async)" (click)="loginWithRedirect()">Login/Sign Up</button>
+    <button *ngIf="auth.isAuthenticated$ | async" (click)="logout()">Logout</button>
+  </div>
+  <div class="logo-container">
+    <img src="../../assets/images/logo.png" alt="logo.png">
+    <p>Weather App</p>
+  </div>
+</header>

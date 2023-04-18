@@ -1,0 +1,7 @@
+<div class="container cities-component-container">
+  <div class="cities-component-cities">
+    <div *ngFor="let city of citiesService.cities | keyvalue; let i = index;" class="cities-component-city">
+      <app-city [city]="city.value" [index]="i"></app-city>
+    </div>
+  </div>
+</div>
