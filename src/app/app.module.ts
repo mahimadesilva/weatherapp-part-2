@@ -23,7 +23,7 @@ import { AuthComponent } from './auth/auth.component';
     CitiesComponent,
     CityComponent,
     ViewCityComponent,
-    AuthComponent
+    AuthComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,11 +33,12 @@ import { AuthComponent } from './auth/auth.component';
       domain: environment.AUTH0_DOMAIN,
       clientId: environment.AUTH0_CLIENTID,
       authorizationParams: {
-        redirect_uri: environment.AUTH0_REDIRECT_URL
-      }
-    })
+        redirect_uri: environment.AUTH0_REDIRECT_URL,
+      },
+      cacheLocation: 'localstorage',
+    }),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
