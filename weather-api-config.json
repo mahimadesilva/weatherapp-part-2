@@ -1,0 +1,4 @@
+{
+  "endpoint": "https://api.openweathermap.org/data/2.5/weather?id={%ID%}&appid={%APIKEY%}",
+  "key": "e4e5a640da20f3a05005a29745eda68c"
+}
