@@ -1,14 +1,104 @@
 <div class="container container-box">
   <p class="arrow" routerLink="/">&larr;</p>
   <div class="box-top">
-    <p class="city-name">{{ citiesService.cities[cityCode].name }}</p>
-    <p class="city-temp">{{ +citiesService.cities[cityCode].main.temp - 273.15 | number: '1.0-0' }} &deg;C</p>
-    <p class="city-desc">{{ citiesService.cities[cityCode].weather[0].description | titlecase}}</p>
-    <img class="weather-icon"
-      [src]="'https://openweathermap.org/img/wn/'+citiesService.cities[cityCode].weather[0].icon+'@2x.png'" alt="icon">
+    <div class="box-top-city">
+      <p class="city-name">
+        {{ citiesService.cities[cityCode].name
+        }}<span class="city-country"
+          >, {{ citiesService.cities[cityCode].sys.country }}</span
+        >
+      </p>
+      <p class="city-dt">
+        <span>{{
+          citiesService.cities[cityCode].dt | date : "h.mm a, MMM d"
+        }}</span>
+      </p>
+    </div>
+    <div class="box-top-desc-temp">
+      <div class="box-top-desc">
+        <img
+          class="weather-icon"
+          [src]="
+            'https://openweathermap.org/img/wn/' +
+            citiesService.cities[cityCode].weather[0].icon +
+            '@2x.png'
+          "
+          alt="icon"
+        />
+        <p class="city-desc">
+          {{
+            citiesService.cities[cityCode].weather[0].description | titlecase
+          }}
+        </p>
+      </div>
+      <div class="box-top-temp">
+        <p class="city-temp">
+          {{
+            +citiesService.cities[cityCode].main.temp - 273.15
+              | number : "1.0-0"
+          }}
+          &deg;C
+        </p>
+        <p class="city-temp-min">
+          Temp Min:
+          {{
+            +citiesService.cities[cityCode].main.temp_min - 273.15
+              | number : "1.0-0"
+          }}
+          &deg;C
+        </p>
+        <p class="city-temp-max">
+          Temp Max:
+          {{
+            +citiesService.cities[cityCode].main.temp_max - 273.15
+              | number : "1.0-0"
+          }}
+          &deg;C
+        </p>
+      </div>
+    </div>
   </div>
   <div class="box-bottom">
-    <p class="city-id">ID: <span>{{ citiesService.cities[cityCode].id}}</span></p>
-    <p class="city-dt">Last Updated At: <span>{{ citiesService.cities[cityCode].dt | date:'h:mm a'}}</span></p>
+    <div class="box-bottom-left">
+      <p class="city-pressure">
+        <span class="bold">Pressure: </span
+        >{{ citiesService.cities[cityCode].main.pressure }}Pa
+      </p>
+      <p class="city-humidity">
+        <span class="bold">Humidity: </span
+        >{{ citiesService.cities[cityCode].main.humidity }}%
+      </p>
+      <p class="city-visibility">
+        <span class="bold">Visibility: </span
+        >{{
+          +citiesService.cities[cityCode].visibility / 1000 | number : "1.1-1"
+        }}km
+      </p>
+    </div>
+    <div class="box-bottom-middle">
+      <img
+        src="../../../assets/images/wind-icon.png"
+        alt="wind-icon"
+        class="wind-icon"
+      />
+      <p class="city-wind semi-bold">
+        {{ +citiesService.cities[cityCode].wind.speed | number : "1.1-1" }}m/s
+        <span>{{ citiesService.cities[cityCode].wind.deg }} Degree</span>
+      </p>
+    </div>
+    <div class="box-bottom-right">
+      <p class="city-sunrise">
+        Sunrise:
+        <span>{{
+          +citiesService.cities[cityCode].sys.sunrise | date : "h.mm a"
+        }}</span>
+      </p>
+      <p class="city-sunset">
+        Sunset:
+        <span>{{
+          +citiesService.cities[cityCode].sys.sunset | date : "h.mm a"
+        }}</span>
+      </p>
+    </div>
   </div>
 </div>

@@ -2,19 +2,23 @@
   color: #ffffff;
   margin-bottom: 86px;
   position: relative;
+  text-align: center;
+  white-space: pre-line;
 }
 .box-top {
   width: 100%;
   background-color: cornflowerblue;
-  text-align: center;
   border-radius: 8px 8px 0 0;
-  padding-bottom: 24px;
+  padding-bottom: 64px;
 }
 .box-bottom {
   width: 100%;
   background-color: #373b47;
+  font-size: 19px;
   border-radius: 0 0 8px 8px;
-  padding-bottom: 40px;
+  padding: 64px 0 64px 0;
+  display: flex;
+  justify-content: center;
 }
 .arrow {
   font-size: 32px;
@@ -22,7 +26,7 @@
   padding: 16px;
   position: absolute;
   top: 0;
-  left: 32px;
+  left: 16px;
   z-index: 2;
   cursor: pointer;
 }
@@ -30,20 +34,69 @@
   color: #b6c7d8;
 }
 .city-name {
-  font-size: 68px;
-  font-weight: 800;
-  line-height: 80px;
-  padding-top: 40px;
+  font-size: 29px;
+  font-weight: 700;
+  padding-top: 64px;
+  padding-bottom: 18px;
 }
-.city-temp, .city-desc {
-  font-size: 28px;
-  padding-top: 18px;
+.city-dt {
+  padding-bottom: 60px;
 }
-.city-id, .city-dt {
-  font-size: 24px;
-  font-weight: 600;
-  padding: 16px 0 0 40px;
+.box-top-desc-temp {
+  display: flex;
+  justify-content: center;
 }
-span {
-  font-weight: 400;
+.weather-icon {
+  width: 80px;
+  height: 80px;
+}
+.box-top-desc,
+.box-top-temp {
+  padding: 0 60px 0 60px;
+}
+.box-top-desc {
+  border-right: 2px solid #ffffff;
+}
+.city-desc {
+  font-size: 19px;
+}
+.city-temp {
+  font-size: 64px;
+  padding-bottom: 34px;
+}
+.city-temp-min {
+  padding-bottom: 14px;
+}
+.box-bottom-left,
+.box-bottom-middle,
+.box-bottom-right {
+  padding: 0 48px;
+  align-items: center;
+}
+.box-bottom-middle {
+  border-left: 2px solid #505466;
+  border-right: 2px solid #505466;
+}
+.city-humidity {
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+.wind-icon {
+  height: 60px;
+  width: 60px;
+  filter: invert(1);
+}
+.city-sunrise {
+  padding-bottom: 16px;
+  padding-top: 16px;
+}
+.city-wind span,
+.city-sunrise span,
+.city-sunset span {
+  white-space: nowrap;
+}
+@media (max-width: 576px) {
+  .city-temp {
+    font-size: 32px;
+  }
 }
