@@ -1,15 +1,74 @@
 <div class="box" [routerLink]="[city.id]">
-  <img class="background-cloud-image" src="../../../assets/images/cloud_bg.png" alt="cloud_bg">
+  <img
+    class="background-cloud-image"
+    src="../../../assets/images/cloud_bg.png"
+    alt="cloud_bg"
+  />
   <div class="color-box"></div>
   <div class="text-box">
-    <p class="city-name">{{ city.name }}</p>
-    <p class="city-temp">{{ +city.main.temp - 273.15 | number: '1.0-0' }} &deg;C</p>
-    <div class="icon-and-description">
-      <img class="weather-icon" [src]="'https://openweathermap.org/img/wn/'+city.weather[0].icon+'@2x.png'" alt="icon">
-      <p class="city-desc">{{ city.weather[0].description | titlecase}}</p>
+    <div class="text-box-left">
+      <p class="city-name">
+        {{ city.name
+        }}<span class="city-country">, {{ city.sys.country }}</span>
+      </p>
+      <p class="city-dt">
+        <span>{{ city.dt | date : "h.mm a, MMM d" }}</span>
+      </p>
+      <div class="icon-and-description">
+        <img
+          class="weather-icon"
+          [src]="
+            'https://openweathermap.org/img/wn/' +
+            city.weather[0].icon +
+            '@2x.png'
+          "
+          alt="icon"
+        />
+        <p class="city-desc">{{ city.weather[0].description | titlecase }}</p>
+      </div>
     </div>
-
+    <div class="text-box-right">
+      <p class="city-temp">
+        {{ +city.main.temp - 273.15 | number : "1.0-0" }} &deg;C
+      </p>
+      <p class="city-temp-min">
+        Temp Min: {{ +city.main.temp_min - 273.15 | number : "1.0-0" }} &deg;C
+      </p>
+      <p class="city-temp-max">
+        Temp Max: {{ +city.main.temp_max - 273.15 | number : "1.0-0" }} &deg;C
+      </p>
+    </div>
   </div>
-  <p class="city-id">ID: <span>{{ city.id }}</span></p>
-  <p class="city-dt">Data Updated At: <span>{{ city.dt | date:'h:mm a'}}</span></p>
+  <div class="city-footer">
+    <div class="city-footer-left">
+      <p class="city-pressure">
+        <span class="bold">Pressure: </span>{{ city.main.pressure }}Pa
+      </p>
+      <p class="city-humidity">
+        <span class="bold">Humidity: </span>{{ city.main.humidity }}%
+      </p>
+      <p class="city-visibility">
+        <span class="bold">Visibility: </span
+        >{{ +city.visibility / 1000 | number : "1.1-1" }}km
+      </p>
+    </div>
+    <div class="city-footer-middle">
+      <img
+        src="../../../assets/images/wind-icon.png"
+        alt="wind-icon"
+        class="wind-icon"
+      />
+      <p class="city-wind semi-bold">
+        {{ +city.wind.speed | number : "1.1-1" }}m/s {{ city.wind.deg }} Degree
+      </p>
+    </div>
+    <div class="city-footer-right">
+      <p class="city-sunrise">
+        Sunrise: {{ +city.sys.sunrise | date : "h.mm a" }}
+      </p>
+      <p class="city-sunset">
+        Sunset: {{ +city.sys.sunset | date : "h.mm a" }}
+      </p>
+    </div>
+  </div>
 </div>
